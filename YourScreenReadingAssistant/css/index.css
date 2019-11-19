@@ -1,0 +1,32 @@
+* {
+  font-family: verdana, arial, helvetica, sans-serif;
+  color: #ddd;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0px;
+  background-color: #111;
+}
+
+#SCP-XXXX {
+  margin: 50px;
+  margin-bottom: 0px;
+  width: calc(100% - 100px);
+  overflow-x: wrap;
+}
+
+b {
+  font-weight: bold !important;
+}
+
+.bottom-quad {
+  background-color: transparent !important;
+}
+
+#scp-image {
+  float: right;
+}
