@@ -8,7 +8,6 @@ html {
 }
 
 body {
-  margin: 0px;
   background-color: #111;
 }
 
@@ -29,4 +28,5 @@ b {
 
 #scp-image {
   float: right;
+  margin-left: 20px;
 }
