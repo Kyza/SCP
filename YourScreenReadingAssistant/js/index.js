@@ -35,7 +35,7 @@ if (annyang) {
       audio.play();
     },
     "tell me a joke": function() {
-      audio = new Audio(`./audio/joke${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/tellmeajoke${selectedAssistant}.wav`);
       audio.play();
     },
     "where are you": function() {
@@ -45,10 +45,17 @@ if (annyang) {
     "can you play an instrument": function() {
       audio = new Audio(`./audio/canyouplayaninstrument${selectedAssistant}.wav`);
       audio.play();
+    },
+    "what happened to matt": function() {
+      audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
+      audio.play();
     }
   };
 
   annyang.addCommands(commands);
 
+  annyang.addCallback("error", (e) => {
+    console.error(e);
+  });
   annyang.start({ autoRestart: true });
 }
