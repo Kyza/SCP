@@ -18,32 +18,32 @@ if (isMobile) {
 }
 
 var audio = new Audio("");
-var selectedAssistant = 1;
+var selectedAssistant = 2;
 
 if (annyang) {
   var commands = {
     "make me a sandwich": function() {
-      audio = new Audio(`./makemeasandwich${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/makemeasandwich${selectedAssistant}.wav`);
       audio.play();
     },
     "what are you": function() {
-      audio = new Audio(`./whatareyou${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/whatareyou${selectedAssistant}.wav`);
       audio.play();
     },
     "can you hear me": function() {
-      audio = new Audio(`./canyouhearme${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/canyouhearme${selectedAssistant}.wav`);
       audio.play();
     },
     "tell me a joke": function() {
-      audio = new Audio(`./joke${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/joke${selectedAssistant}.wav`);
       audio.play();
     },
     "where are you": function() {
-      audio = new Audio(`./whereareyou${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/whereareyou${selectedAssistant}.wav`);
       audio.play();
     },
     "can you play an instrument": function() {
-      audio = new Audio(`./canyouplayaninstrument${selectedAssistant}.wav`);
+      audio = new Audio(`./audio/canyouplayaninstrument${selectedAssistant}.wav`);
       audio.play();
     }
   };
