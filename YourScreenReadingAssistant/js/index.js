@@ -17,6 +17,10 @@ if (isMobile) {
     .className.trim();
 }
 
+var drift = new Drift(document.querySelector(".scp-image"), {
+  paneContainer: document.querySelector(".image")
+});
+
 var audio = new Audio("");
 var selectedAssistant = 2;
 

@@ -32,18 +32,12 @@ b {
   margin: 20px;
   margin-top: 0px;
   max-width: 100%;
+
+  transition-duration: 0.4s;
 }
 
 .scp-image {
   width: 100%;
-}
-
-.scp-image:active {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999999999999;
 }
 
 .image-text {
