@@ -26,7 +26,29 @@ b {
   background-color: transparent !important;
 }
 
-#scp-image {
+.image {
   float: right;
-  margin-left: 20px;
+  clear: right;
+  margin: 20px;
+  margin-top: 0px;
+  max-width: 100%;
+}
+
+.scp-image {
+  width: 100%;
+}
+
+.scp-image:active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999999999;
+}
+
+.image-text {
+  text-align: center;
+  background-color: #111;
+  padding: 5px;
+  border: 3px #222 solid;
 }

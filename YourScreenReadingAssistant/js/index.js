@@ -57,5 +57,5 @@ if (annyang) {
   annyang.addCallback("error", (e) => {
     console.error(e);
   });
-  annyang.start({ continuous:true });
+  annyang.start({ continuous: true });
 }
