@@ -50,8 +50,5 @@ if (annyang) {
 
   annyang.addCommands(commands);
 
-  annyang.addCallback("error", (e) => {
-    console.log("error", e);
-  });
   annyang.start({ autoRestart: true });
 }
