@@ -144,7 +144,8 @@ b {
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+  height: 100vh;
+  /* https://en.wikipedia.org/wiki/File:Random_static.gif */
 	background-image: url("../images/static.gif");
 	background-size: cover;
 	z-index: 300;
