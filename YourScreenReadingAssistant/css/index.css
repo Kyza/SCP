@@ -1,124 +1,170 @@
 * {
-  font-family: verdana, arial, helvetica, sans-serif;
+	font-family: verdana, arial, helvetica, sans-serif;
   color: #ddd;
+  outline: none !important;
 }
 
 html {
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 body {
-  background-color: #111;
+	background-color: #111;
 }
 
 #SCP-XXXX {
-  margin: 50px;
-  margin-bottom: 0px;
-  width: calc(100% - 100px);
-  overflow-x: wrap;
+	margin: 55px;
+	margin-bottom: 0px;
+	width: calc(100% - 100px);
+	overflow-x: wrap;
 }
 
 b {
-  font-weight: bold !important;
+	font-weight: bold !important;
 }
 
 .bottom-quad {
-  background-color: transparent !important;
+	background-color: transparent !important;
 }
 
 .image {
-  float: right;
-  clear: right;
-  margin: 20px;
-  margin-top: 0px;
-  max-width: 100%;
+	float: right;
+	clear: right;
+	margin: 20px;
+	margin-top: 0px;
+	max-width: 100%;
 
-  transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 
 .scp-image {
-  width: 100%;
+	width: 100%;
 }
 
 .image-text {
-  text-align: center;
-  background-color: #111;
-  padding: 5px;
-  border: 3px #222 solid;
+	text-align: center;
+	background-color: #111;
+	padding: 5px;
+	border: 3px #222 solid;
 }
 
 #voice-settings-open-button {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  border-top-right-radius: 10px;
-  background-color: #ddd;
-  filter: invert(100%);
-  background-image: url("https://image.flaticon.com/icons/svg/149/149429.svg");
-  border: 10px solid #ddd;
-  transition-duration: 0.4s;
-  outline: none;
-  z-index: 200;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background-color: #eee;
+	filter: invert(100%);
+	background-image: url("https://image.flaticon.com/icons/svg/149/149429.svg");
+	border: 10px solid #eee;
+	transition-duration: 0.4s;
+	z-index: 200;
 }
 
 #voice-settings-close-button {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  border-top-right-radius: 10px;
-  background-color: #eee;
-  filter: invert(100%);
-  background-image: url("https://image.flaticon.com/icons/svg/109/109702.svg");
-  border: 10px solid #eee;
-  transition-duration: 0.4s;
-  outline: none;
-  transform: translate(-100%, 100%);
-  z-index: 300;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background-color: #eee;
+	filter: invert(100%);
+	background-image: url("https://image.flaticon.com/icons/svg/109/109702.svg");
+	border: 10px solid #eee;
+	transition-duration: 0.4s;
+	transform: translate(-100%, 100%);
+	z-index: 300;
 }
 
 #voice-settings {
-  pointer-events: none;
-  position: fixed;
+	pointer-events: none;
+	position: fixed;
 
-  z-index: 100;
+	z-index: 100;
 
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 100px;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 60px;
 
-  opacity: 0;
+	opacity: 0;
 
-  background-color: #222;
+	background-color: #222;
   transition-duration: 0.4s;
-
-  outline: none;
+  
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 
-#voice-settings-open-button:focus ~ #voice-settings, #voice-settings:focus, #voice-settings:focus * {
-  pointer-events: auto;
-  opacity: 1;
+#voice-settings-open-button:focus ~ #voice-settings,
+#voice-settings:focus,
+#voice-settings:focus-within {
+	pointer-events: auto;
+	opacity: 1;
 }
 
-#voice-settings-open-button:focus ~ #voice-settings-close-button, #voice-settings:focus ~ #voice-settings-close-button {
-  transform: translate(0, 0);
+#voice-settings-open-button:focus ~ #voice-settings-close-button,
+#voice-settings:focus ~ #voice-settings-close-button,
+#voice-settings:focus-within ~ #voice-settings-close-button {
+	transform: translate(0, 0);
+}
+
+#ask-box {
+  height: calc(100% - 10px);
+  color: #999;
+  border: 5px solid #222;
+  background-color: #111;
+  height: 100%;
+  font-size: 20px;
+  margin-left: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#select-sam, #select-adam, #select-matt {
+  height: calc(100% - 10px);
+  line-height: 50px;
+  text-align: center;
+  border: 5px solid #222;
+  background-color: #111;
+  user-select: none;
+  transition-duration: 0.4s;
+  word-wrap: none;
+  line-break: none;
+}
+#select-sam:hover, #select-adam:hover, #select-matt:hover {
+  background-color: #222;
 }
 
 #static {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("../images/static.gif");
-  background-size: cover;
-  z-index: 300;
-  opacity: 0.02;
-  pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-image: url("../images/static.gif");
+	background-size: cover;
+	z-index: 300;
+	opacity: 0.02;
+	pointer-events: none;
+}
+
+@media (max-width: 1300px) {
+  #voice-settings {
+    height: 120px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 50% 50%;
+  }
+
+  #ask-box {
+    grid-column: 1/4;
+    grid-row: 2;
+  }
+
+  #select-sam, #select-adam, #select-matt {
+    grid-row: 1;
+  }
 }

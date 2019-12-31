@@ -17,6 +17,11 @@ if (isMobile) {
 		.className.trim();
 }
 
+document.querySelector("html").requestFullscreen();
+document.onclick = () => {
+  document.querySelector("html").requestFullscreen();
+};
+
 var static = new Audio("./audio/static.wav");
 static.loop = true;
 static.addEventListener(
@@ -30,47 +35,60 @@ static.addEventListener(
 	},
 	false
 );
+static.volume = 0.5;
 static.play();
 
 var audio = new Audio("");
-var selectedAssistant = 2;
+var selectedAssistant = 1;
+
+var commands = {
+  "make me a sandwich": function() {
+    audio = new Audio(`./audio/makemeasandwich${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "what are you": function() {
+    audio = new Audio(`./audio/whatareyou${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "can you hear me": function() {
+    audio = new Audio(`./audio/canyouhearme${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "tell me a joke": function() {
+    audio = new Audio(`./audio/tellmeajoke${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "where are you": function() {
+    audio = new Audio(`./audio/whereareyou${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "can you play an instrument": function() {
+    audio = new Audio(`./audio/canyouplayaninstrument${selectedAssistant}.wav`);
+    audio.play();
+  },
+  "what happened to matt": function() {
+    audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
+    audio.play();
+  }
+};
 
 if (annyang) {
-	var commands = {
-		"make me a sandwich": function() {
-			audio = new Audio(`./audio/makemeasandwich${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"what are you": function() {
-			audio = new Audio(`./audio/whatareyou${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"can you hear me": function() {
-			audio = new Audio(`./audio/canyouhearme${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"tell me a joke": function() {
-			audio = new Audio(`./audio/tellmeajoke${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"where are you": function() {
-			audio = new Audio(`./audio/whereareyou${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"can you play an instrument": function() {
-			audio = new Audio(`./audio/canyouplayaninstrument${selectedAssistant}.wav`);
-			audio.play();
-		},
-		"what happened to matt": function() {
-			audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
-			audio.play();
-		}
-	};
-
-	annyang.addCommands(commands);
+  console.log("Starting speech recognition.");
+  
+  annyang.addCommands(commands);
+  
+  annyang.debug(true);
 
 	annyang.addCallback("error", (e) => {
 		console.error(e);
-	});
+  });
+  
 	annyang.start({ continuous: true });
 }
+
+var askBox = document.querySelector("#ask-box");
+askBox.addEventListener("input", () => {
+  if (commands[askBox.value.toLowerCase()]) {
+    commands[askBox.value.toLowerCase()]();
+  }
+});
