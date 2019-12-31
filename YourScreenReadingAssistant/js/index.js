@@ -11,9 +11,9 @@ if (
 	isMobile = true;
 }
 if (isMobile) {
-	document.querySelector("#SCP-XXXX").className += " mobile";
-	document.querySelector("#SCP-XXXX").className = document
-		.querySelector("#SCP-XXXX")
+	document.querySelector("#SCP-5000").className += " mobile";
+	document.querySelector("#SCP-5000").className = document
+		.querySelector("#SCP-5000")
 		.className.trim();
 }
 
