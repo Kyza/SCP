@@ -46,3 +46,79 @@ b {
   padding: 5px;
   border: 3px #222 solid;
 }
+
+#voice-settings-open-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  background-color: #ddd;
+  filter: invert(100%);
+  background-image: url("https://image.flaticon.com/icons/svg/149/149429.svg");
+  border: 10px solid #ddd;
+  transition-duration: 0.4s;
+  outline: none;
+  z-index: 200;
+}
+
+#voice-settings-close-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  background-color: #eee;
+  filter: invert(100%);
+  background-image: url("https://image.flaticon.com/icons/svg/109/109702.svg");
+  border: 10px solid #eee;
+  transition-duration: 0.4s;
+  outline: none;
+  transform: translate(-100%, 100%);
+  z-index: 300;
+}
+
+#voice-settings {
+  pointer-events: none;
+  position: fixed;
+
+  z-index: 100;
+
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+
+  opacity: 0;
+
+  background-color: #222;
+  transition-duration: 0.4s;
+
+  outline: none;
+}
+
+#voice-settings-open-button:focus ~ #voice-settings, #voice-settings:focus, #voice-settings:focus * {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+#voice-settings-open-button:focus ~ #voice-settings-close-button, #voice-settings:focus ~ #voice-settings-close-button {
+  transform: translate(0, 0);
+}
+
+#static {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/static.gif");
+  background-size: cover;
+  z-index: 300;
+  opacity: 0.02;
+  pointer-events: none;
+}
