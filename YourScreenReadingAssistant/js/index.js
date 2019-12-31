@@ -17,10 +17,6 @@ if (isMobile) {
 		.className.trim();
 }
 
-var drift = new Drift(document.querySelector(".scp-image"), {
-	paneContainer: document.querySelector(".image")
-});
-
 var static = new Audio("./audio/static.wav");
 static.loop = true;
 static.addEventListener(
