@@ -10,6 +10,7 @@ html {
 
 body {
 	background-color: #111;
+	overflow-x: hidden;
 }
 
 #SCP {
@@ -150,7 +151,18 @@ b {
 	background-size: cover;
 	z-index: 300;
 	opacity: 0.02;
-	pointer-events: none;
+  pointer-events: none;
+}
+#inset {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+  height: 100vh;
+	z-index: 301;
+  pointer-events: none;
+  opacity: 1;
+  box-shadow: inset 0px 0px 50px black;
 }
 
 @media (max-width: 1300px) {
