@@ -11,16 +11,16 @@ if (
 	isMobile = true;
 }
 if (isMobile) {
-	document.querySelector("#SCP-5000").className += " mobile";
-	document.querySelector("#SCP-5000").className = document
-		.querySelector("#SCP-5000")
+	document.querySelector("#SCP").className += " mobile";
+	document.querySelector("#SCP").className = document
+		.querySelector("#SCP")
 		.className.trim();
 }
 
-document.querySelector("html").requestFullscreen();
-document.onclick = () => {
-  document.querySelector("html").requestFullscreen();
-};
+// document.querySelector("html").requestFullscreen();
+// document.onclick = () => {
+//   document.querySelector("html").requestFullscreen();
+// };
 
 var static = new Audio("./audio/static.wav");
 static.loop = true;
