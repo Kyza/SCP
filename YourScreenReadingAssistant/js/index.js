@@ -66,12 +66,11 @@ window.onload = () => {
 		setTimeout(addLine, time);
 	}
 	setTimeout(() => {
+    new Audio("./audio/beep1.wav").play();
 		sayLine("<br><b>Forbidden Error ID-233</b>");
+    sayLine("<b>Internet Access Forbidden</b>");
 		setTimeout(() => {
-			sayLine("<b>Internet Access Forbidden</b>");
-      new Audio("./audio/beep1.wav").play();
-		}, 1000);
-		setTimeout(() => {
+      new Audio("./audio/beep2.wav").play();
 			sayLine("<b><u style='color: #a11;'>Click To Establish P2P Connection Anyway</u></b>");
 
 			let onclickContinue = () => {
@@ -105,7 +104,7 @@ window.onload = () => {
           sayLine("Connection Established");
 				}, 10000);
 				setTimeout(() => {
-          new Audio("./audio/beep2.wav").play();
+          new Audio("./audio/beep3.wav").play();
           sayLine("Rendering Document");
           startup.style = `opacity: 0; pointer-events: none; background-color: #a11;`;
 				}, 11000);
