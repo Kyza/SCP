@@ -10,7 +10,12 @@ html {
 
 body {
 	background-color: #111;
-	overflow-x: hidden;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+#header {
+  padding: 8px;
 }
 
 #SCP {
@@ -133,8 +138,7 @@ b {
   background-color: #111;
   user-select: none;
   transition-duration: 0.4s;
-  word-wrap: none;
-  line-break: none;
+  cursor: pointer;
 }
 #select-sam:hover, #select-adam:hover, #select-matt:hover {
   background-color: #222;
