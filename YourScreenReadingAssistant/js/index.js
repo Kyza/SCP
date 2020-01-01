@@ -20,14 +20,23 @@ if (isMobile) {
 var static = new Audio("./audio/static.wav");
 static.loop = true;
 static.addEventListener("timeupdate", loop, false);
-static.volume = 0.5;
+static.volume = 0.25;
 static.play();
 
 var clicked = false;
+var fullscreened = false;
 fullscreen();
+if (
+	window.fullScreen ||
+	(window.innerWidth == screen.width && window.innerHeight == screen.height)
+) {
+  fullscreened = true;
+}
 document.onclick = () => {
 	if (!clicked) {
-    fullscreen();
+    if (!fullscreened) {
+      fullscreen();
+    }
 		static.play();
 	}
 	clicked = true;
@@ -42,16 +51,16 @@ function loop() {
 }
 
 function fullscreen() {
-  var html = document.querySelector("html");
-  if (html.requestFullscreen) {
-    html.requestFullscreen();
-  } else if (html.msRequestFullscreen) {
-    html.msRequestFullscreen();
-  } else if (html.mozRequestFullScreen) {
-    html.mozRequestFullScreen();
-  } else if (html.webkitRequestFullscreen) {
-    html.webkitRequestFullscreen();
-  }
+	var html = document.querySelector("html");
+	if (html.requestFullscreen) {
+		html.requestFullscreen();
+	} else if (html.msRequestFullscreen) {
+		html.msRequestFullscreen();
+	} else if (html.mozRequestFullScreen) {
+		html.mozRequestFullScreen();
+	} else if (html.webkitRequestFullscreen) {
+		html.webkitRequestFullscreen();
+	}
 }
 
 var audio = new Audio("");
