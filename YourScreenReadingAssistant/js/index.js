@@ -20,7 +20,7 @@ if (isMobile) {
 var static = new Audio("./audio/static.wav");
 static.loop = true;
 static.addEventListener("timeupdate", loop, false);
-static.volume = 1;
+static.volume = 0.5;
 static.play();
 
 var clicked = false;
