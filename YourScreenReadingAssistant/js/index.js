@@ -17,10 +17,17 @@ if (isMobile) {
 		.className.trim();
 }
 
-// document.querySelector("html").requestFullscreen();
-// document.onclick = () => {
-//   document.querySelector("html").requestFullscreen();
-// };
+var static = new Audio("./audio/static.wav");
+static.loop = true;
+static.addEventListener("timeupdate", loop, false);
+static.volume = 1;
+static.play();
+
+document.querySelector("html").requestFullscreen();
+document.onclick = () => {
+  document.querySelector("html").requestFullscreen();
+  static.play();
+};
 
 function loop() {
 	var buffer = 0.7;
@@ -29,12 +36,6 @@ function loop() {
 		this.play();
 	}
 }
-
-var static = new Audio("./audio/static.wav");
-static.loop = true;
-static.addEventListener("timeupdate", loop, false);
-static.volume = 1;
-static.play();
 
 var audio = new Audio("");
 var selectedAssistant = 1;
