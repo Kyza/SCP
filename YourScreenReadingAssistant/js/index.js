@@ -39,7 +39,7 @@ static.volume = 0.5;
 static.play();
 
 var audio = new Audio("");
-var selectedAssistant = 1;
+var selectedAssistant = 2;
 
 var commands = {
   "make me a sandwich": function() {
