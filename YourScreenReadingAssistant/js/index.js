@@ -23,10 +23,14 @@ static.addEventListener("timeupdate", loop, false);
 static.volume = 1;
 static.play();
 
+var clicked = false;
 document.querySelector("html").requestFullscreen();
 document.onclick = () => {
-  document.querySelector("html").requestFullscreen();
-  static.play();
+	if (!clicked) {
+		document.querySelector("html").requestFullscreen();
+		static.play();
+	}
+	clicked = true;
 };
 
 function loop() {
@@ -53,17 +57,13 @@ document.querySelector("#select-adam").onclick = () => {
 };
 
 document.querySelector("#select-matt").onclick = () => {
-  selectedAssistant = 3;
-  audio.pause();
-  audio = new Audio("./audio/matt.wav");
-  try {
-    audio.removeEventListener("timeupdate", loop);
-  } catch (e) {}
-	audio.addEventListener(
-		"timeupdate",
-		loop,
-		false
-	);
+	selectedAssistant = 3;
+	audio.pause();
+	audio = new Audio("./audio/matt.wav");
+	try {
+		audio.removeEventListener("timeupdate", loop);
+	} catch (e) {}
+	audio.addEventListener("timeupdate", loop, false);
 	audio.play();
 };
 
