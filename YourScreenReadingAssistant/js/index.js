@@ -24,10 +24,10 @@ static.volume = 0.5;
 static.play();
 
 var clicked = false;
-document.querySelector("html").requestFullscreen();
+fullscreen();
 document.onclick = () => {
 	if (!clicked) {
-		document.querySelector("html").requestFullscreen();
+    fullscreen();
 		static.play();
 	}
 	clicked = true;
@@ -39,6 +39,19 @@ function loop() {
 		this.currentTime = 0;
 		this.play();
 	}
+}
+
+function fullscreen() {
+  var html = document.querySelector("html");
+  if (html.requestFullscreen) {
+    html.requestFullscreen();
+  } else if (html.msRequestFullscreen) {
+    html.msRequestFullscreen();
+  } else if (html.mozRequestFullScreen) {
+    html.mozRequestFullScreen();
+  } else if (html.webkitRequestFullscreen) {
+    html.webkitRequestFullscreen();
+  }
 }
 
 var audio = new Audio("");
