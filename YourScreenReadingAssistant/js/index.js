@@ -52,7 +52,8 @@ document.querySelector("#select-adam").onclick = () => {
 };
 
 document.querySelector("#select-matt").onclick = () => {
-	selectedAssistant = 3;
+  selectedAssistant = 3;
+  audio.pause();
   audio = new Audio("./audio/matt.wav");
   try {
     audio.removeEventListener("timeupdate", loop);
