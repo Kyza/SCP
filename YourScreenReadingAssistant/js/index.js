@@ -30,17 +30,100 @@ if (
 	window.fullScreen ||
 	(window.innerWidth == screen.width && window.innerHeight == screen.height)
 ) {
-  fullscreened = true;
+	fullscreened = true;
 }
 document.onclick = () => {
 	if (!clicked) {
-    if (!fullscreened) {
-      fullscreen();
-    }
+		if (!fullscreened) {
+			fullscreen();
+		}
 		static.play();
 	}
 	clicked = true;
 };
+
+function popup(title, text) {
+	let popups = document.querySelector("#popups");
+	let popup = document.createElement("div");
+	popup.textContent = title + " " + text;
+	popups.appendChild(popup);
+}
+
+var startup = document.querySelector("#startup");
+window.onload = () => {
+	let addLine = () => {
+		startup.innerHTML += randString(randNumber(80, 160)) + "<br>";
+		startup.scrollTo(0, startup.scrollHeight);
+	};
+	let sayLine = (line) => {
+		startup.innerHTML += line + "<br>";
+		startup.scrollTo(0, startup.scrollHeight);
+	};
+	let lineAmount = randNumber(50, 125);
+  sayLine("Creating Mainframe");
+	for (let i = 0; i < lineAmount; i++) {
+		let time = randNumber(5, 50) * i;
+		setTimeout(addLine, time);
+	}
+	setTimeout(() => {
+		sayLine("<br><b>Forbidden Error ID-233</b>");
+		setTimeout(() => {
+			sayLine("<b>Internet Access Forbidden</b>");
+      new Audio("./audio/beep1.wav").play();
+		}, 1000);
+		setTimeout(() => {
+			sayLine("<b><u style='color: #a11;'>Click To Establish P2P Connection Anyway</u></b>");
+
+			let onclickContinue = () => {
+				startup.removeEventListener("click", onclickContinue);
+				sayLine("Connecting...");
+				sayLine("Sound Feed Connected");
+				sayLine("Downloading Article...");
+				setTimeout(() => {
+					for (let i = 0; i < 46; i++) {
+						sayLine(`Progress ${i}%`);
+					}
+				}, 1000);
+				setTimeout(() => {
+					sayLine("Progress 47%");
+				}, 3000);
+				setTimeout(() => {
+					sayLine("Progress 48%");
+				}, 4000);
+				setTimeout(() => {
+					sayLine("Progress 47%");
+				}, 4500);
+				setTimeout(() => {
+					for (let i = 48; i < 96; i++) {
+						sayLine(`Progress ${i}%`);
+					}
+				}, 6000);
+				setTimeout(() => {
+					for (let i = 97; i < 100; i++) {
+						sayLine(`Progress ${i}%`);
+					}
+          sayLine("Connection Established");
+				}, 10000);
+				setTimeout(() => {
+          new Audio("./audio/beep2.wav").play();
+          sayLine("Rendering Document");
+          startup.style = `opacity: 0; pointer-events: none; background-color: #a11;`;
+				}, 11000);
+			};
+			startup.addEventListener("click", onclickContinue);
+		}, 2000);
+	}, lineAmount * 50);
+};
+
+function randString(length) {
+	var result = "";
+	var characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:"<>?[]\;',./'\`~`;
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
 
 function loop() {
 	var buffer = 0.7;
@@ -140,3 +223,13 @@ askBox.addEventListener("input", () => {
 		commands[askBox.value.toLowerCase()]();
 	}
 });
+
+function randNumber(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+function glitch() {
+	console.log("Glitch.");
+	setTimeout(glitch, randNumber(5000, 10000));
+}
+glitch();

@@ -21,6 +21,19 @@ body {
   padding: 8px;
 }
 
+#startup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+  overflow: auto;
+  z-index: 299;
+  transition-duration: 2s;
+  transition-property: opacity;
+}
+
 #SCP {
 	margin: 60px;
 	margin-bottom: 0px;
