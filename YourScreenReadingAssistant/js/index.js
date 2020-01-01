@@ -35,7 +35,7 @@ static.addEventListener(
 	},
 	false
 );
-static.volume = 0.5;
+static.volume = 1;
 static.play();
 
 var audio = new Audio("");
