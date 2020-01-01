@@ -70,10 +70,10 @@ window.onload = () => {
 		sayLine("<br><b>Forbidden Error ID-233</b>");
     sayLine("<b>Internet Access Forbidden</b>");
 		setTimeout(() => {
-      new Audio("./audio/beep2.wav").play();
 			sayLine("<b><u style='color: #a11;'>Click To Establish P2P Connection Anyway</u></b>");
 
 			let onclickContinue = () => {
+        new Audio("./audio/beep2.wav").play();
 				startup.removeEventListener("click", onclickContinue);
 				sayLine("Connecting...");
 				sayLine("Sound Feed Connected");
