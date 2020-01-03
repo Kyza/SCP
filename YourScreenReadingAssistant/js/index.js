@@ -15,12 +15,16 @@ if (isMobile) {
 	document.querySelector("#SCP").className = document
 		.querySelector("#SCP")
 		.className.trim();
+	let staticOverlay = document.querySelector("#static");
+	staticOverlay.style.opacity = 0.05;
 }
 
 var static = new Audio("./audio/static.wav");
 static.loop = true;
 static.addEventListener("timeupdate", loop, false);
-static.volume = 0.25;
+if (!isMobile) {
+	static.volume = 0.25;
+}
 static.play();
 
 var clicked = false;
@@ -60,54 +64,80 @@ window.onload = () => {
 		startup.scrollTo(0, startup.scrollHeight);
 	};
 	let lineAmount = randNumber(50, 125);
-  sayLine("Creating Mainframe");
+	sayLine("<b>Establishing Mainframe</b>");
 	for (let i = 0; i < lineAmount; i++) {
 		let time = randNumber(5, 50) * i;
 		setTimeout(addLine, time);
 	}
 	setTimeout(() => {
-    new Audio("./audio/beep1.wav").play();
-		sayLine("<br><b>Forbidden Error ID-233</b>");
-    sayLine("<b>Internet Access Forbidden</b>");
+		new Audio("./audio/beep1.wav").play();
+		sayLine(
+			`<br><b><u style='color: #aa1;'>[Warning] Forbidden Error ID-${Math.floor(
+				randNumber(0, 4999.99)
+			)}</u></b>`
+		);
+		sayLine(
+			"<b><u style='color: #aa1;'>[Warning] Internet Access Forbidden</u></b>"
+		);
 		setTimeout(() => {
-			sayLine("<b><u style='color: #a11;'>Click To Establish P2P Connection Anyway</u></b>");
+			sayLine(
+				"<b><u style='color: #a11; cursor: pointer;'>[Danger] Click To Establish P2P Connection</u></b>"
+			);
 
 			let onclickContinue = () => {
-        new Audio("./audio/beep2.wav").play();
 				startup.removeEventListener("click", onclickContinue);
-				sayLine("Connecting...");
-				sayLine("Sound Feed Connected");
-				sayLine("Downloading Article...");
+				new Audio("./audio/beep2.wav").play();
+				sayLine("<b>Connecting...</b>");
+				sayLine("<b>Sound Feed Connected</b>");
+				sayLine("<b>Inputting Encrypted Credentials...</b>");
 				setTimeout(() => {
-					for (let i = 0; i < 46; i++) {
-						sayLine(`Progress ${i}%`);
+					for (let i = 0; i < 200; i++) {
+						setTimeout(addLine, 5 * i);
 					}
-				}, 1000);
-				setTimeout(() => {
-					sayLine("Progress 47%");
 				}, 3000);
 				setTimeout(() => {
-					sayLine("Progress 48%");
-				}, 4000);
-				setTimeout(() => {
-					sayLine("Progress 47%");
-				}, 4500);
-				setTimeout(() => {
-					for (let i = 48; i < 96; i++) {
-						sayLine(`Progress ${i}%`);
-					}
+					sayLine("<br><b>Downloading Article...</b>");
 				}, 6000);
 				setTimeout(() => {
-					for (let i = 97; i < 100; i++) {
-						sayLine(`Progress ${i}%`);
+					for (let i = 0; i <= 46; i++) {
+						setTimeout(() => {
+							sayLine(`Progress ${i}%`);
+						}, 5 * i);
 					}
-          sayLine("Connection Established");
 				}, 10000);
 				setTimeout(() => {
-          new Audio("./audio/beep3.wav").play();
-          sayLine("Rendering Document");
-          startup.style = `opacity: 0; pointer-events: none; background-color: #a11;`;
-				}, 11000);
+					sayLine("Progress 47%");
+				}, 12000);
+				setTimeout(() => {
+					sayLine("Progress 48%");
+				}, 13000);
+				setTimeout(() => {
+					sayLine("Progress 47%");
+				}, 13500);
+				setTimeout(() => {
+					for (let i = 48; i <= 96; i++) {
+						setTimeout(() => {
+							sayLine(`Progress ${i}%`);
+						}, 5 * (i - 48));
+					}
+				}, 15000);
+				setTimeout(() => {
+					for (let i = 97; i <= 100; i++) {
+						setTimeout(() => {
+							sayLine(`Progress ${i}%`);
+						}, 5 * (i - 97));
+					}
+					setTimeout(() => {
+						sayLine("<b>Connection Established</b>");
+					}, 25);
+				}, 21000);
+				setTimeout(() => {
+					sayLine("<b>Rendering Document</b>");
+				}, 22000);
+				setTimeout(() => {
+					new Audio("./audio/beep3.wav").play();
+					startup.style = `opacity: 0; pointer-events: none; background-color: #a11;`;
+				}, 23000);
 			};
 			startup.addEventListener("click", onclickContinue);
 		}, 2000);

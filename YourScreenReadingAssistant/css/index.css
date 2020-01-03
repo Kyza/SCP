@@ -1,9 +1,9 @@
 * {
 	font-family: verdana, arial, helvetica, sans-serif;
-  color: #ddd;
-  outline: none !important;
-  scrollbar-width: thin;
-  scrollbar-color: #222 #111;
+	color: #ddd;
+	outline: none !important;
+	scrollbar-width: thin;
+	scrollbar-color: #222 #111;
 }
 
 html {
@@ -12,26 +12,32 @@ html {
 
 body {
 	background-color: #111;
-  overflow-x: hidden;
-  margin: 0;
-  padding-bottom: 60px;
+	overflow-x: hidden;
+	margin: 0;
+	padding-bottom: 60px;
 }
 
 #header {
-  padding: 8px;
+	padding: 8px;
 }
 
 #startup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #111;
-  overflow: auto;
-  z-index: 299;
-  transition-duration: 2s;
-  transition-property: opacity;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #111;
+	overflow: auto;
+	z-index: 299;
+	transition-duration: 2s;
+	transition-property: opacity;
+	user-select: none;
+}
+
+#startup::-webkit-scrollbar {
+	width: 0px !important;
+	height: 0px !important;
 }
 
 #SCP {
@@ -115,10 +121,10 @@ b {
 	opacity: 0;
 
 	background-color: #222;
-  transition-duration: 0.4s;
-  
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+	transition-duration: 0.4s;
+
+	display: grid;
+	grid-template-columns: auto auto auto auto;
 }
 
 #voice-settings-open-button:focus ~ #voice-settings,
@@ -135,29 +141,33 @@ b {
 }
 
 #ask-box {
-  height: calc(100% - 10px);
-  color: #999;
-  border: 5px solid #222;
-  background-color: #111;
-  height: 100%;
-  font-size: 20px;
-  margin-left: 60px;
-  padding-left: 10px;
-  padding-right: 10px;
+	height: calc(100% - 10px);
+	color: #999;
+	border: 5px solid #222;
+	background-color: #111;
+	height: 100%;
+	font-size: 20px;
+	margin-left: 60px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
-#select-sam, #select-adam, #select-matt {
-  height: calc(100% - 10px);
-  line-height: 50px;
-  text-align: center;
-  border: 5px solid #222;
-  background-color: #111;
-  user-select: none;
-  transition-duration: 0.4s;
-  cursor: pointer;
+#select-sam,
+#select-adam,
+#select-matt {
+	height: calc(100% - 10px);
+	line-height: 50px;
+	text-align: center;
+	border: 5px solid #222;
+	background-color: #111;
+	user-select: none;
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
-#select-sam:hover, #select-adam:hover, #select-matt:hover {
-  background-color: #222;
+#select-sam:hover,
+#select-adam:hover,
+#select-matt:hover {
+	background-color: #222;
 }
 
 #static {
@@ -165,49 +175,51 @@ b {
 	top: 0;
 	left: 0;
 	width: 100vw;
-  height: 100vh;
-  /* https://en.wikipedia.org/wiki/File:Random_static.gif */
+	height: 100vh;
+	/* https://en.wikipedia.org/wiki/File:Random_static.gif */
 	background-image: url("../images/static.gif");
 	background-size: cover;
 	z-index: 300;
 	opacity: 0.02;
-  pointer-events: none;
+	pointer-events: none;
 }
 #inset {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
-  height: 100vh;
+	height: 100vh;
 	z-index: 301;
-  pointer-events: none;
-  opacity: 1;
-  box-shadow: inset 0px 0px 50px black;
+	pointer-events: none;
+	opacity: 1;
+	box-shadow: inset 0px 0px 50px black;
 }
 
 @media (max-width: 1300px) {
-  #voice-settings {
-    height: 120px;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 50% 50%;
-  }
+	#voice-settings {
+		height: 120px;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: 50% 50%;
+	}
 
-  #ask-box {
-    grid-column: 1/4;
-    grid-row: 2;
-  }
+	#ask-box {
+		grid-column: 1/4;
+		grid-row: 2;
+	}
 
-  #select-sam, #select-adam, #select-matt {
-    grid-row: 1;
-  }
+	#select-sam,
+	#select-adam,
+	#select-matt {
+		grid-row: 1;
+	}
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  background-color: #111;
+	width: 10px;
+	height: 10px;
+	background-color: #111;
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #222; 
+	background: #222;
 }
