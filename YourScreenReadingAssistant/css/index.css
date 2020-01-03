@@ -6,6 +6,28 @@
 	scrollbar-color: #222 #111;
 }
 
+.main-class::before, .top-icon::before {
+  border-color: rgb(12, 12, 12) !important;
+  filter: invert(0%) !important;
+}
+
+.main-class::after {
+  border-color: rgb(243, 243, 243) !important;
+  filter: invert(100%) !important;
+}
+
+.main-class::after {
+  background-image: url(http://scptestwiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg) !important;
+}
+
+.bottom-quad {
+  filter: invert(100%) !important;
+}
+.bottom-icon::before {
+  filter: invert(100%) !important;
+  background-image: url(http://scptestwiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg) !important;
+}
+
 html {
 	overflow-x: hidden;
 }
@@ -49,10 +71,6 @@ body {
 
 b {
 	font-weight: bold !important;
-}
-
-.bottom-quad {
-	background-color: transparent !important;
 }
 
 .image {
