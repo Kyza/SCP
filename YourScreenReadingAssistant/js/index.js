@@ -24,7 +24,7 @@ if (isMobile) {
 	staticOverlay.style.opacity = 0.05;
 }
 
-document.querySelector("#startup").remove();
+// document.querySelector("#startup").remove();
 
 var static = new Audio("./audio/static.wav");
 static.loop = true;
