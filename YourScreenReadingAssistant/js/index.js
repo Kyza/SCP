@@ -240,7 +240,7 @@ var commands = {
 		audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
 		audio.play();
 	},
-	"help": function() {
+	help: function() {
 		if (shownRedacted && selectedAssistant == 2) {
 			try {
 				audio = new Audio(`./audio/showedredacted${selectedAssistant}.wav`);
@@ -252,7 +252,9 @@ var commands = {
 				audio.play();
 			} catch (e) {}
 			if (selectedAssistant == 2) {
-				showRedactedParagraphs();
+				setTimeout(() => {
+					showRedactedParagraphs();
+				}, 14000);
 			}
 		}
 	},
@@ -266,9 +268,11 @@ var commands = {
 			try {
 				audio = new Audio(`./audio/showredacted${selectedAssistant}.wav`);
 				audio.play();
-      } catch (e) {}
+			} catch (e) {}
 			if (selectedAssistant == 2) {
-				showRedactedParagraphs();
+				setTimeout(() => {
+					showRedactedParagraphs();
+				}, 14000);
 			}
 		}
 	}
@@ -278,8 +282,8 @@ function showRedactedParagraphs() {
 	let redactedParagraphs = document.querySelectorAll(".hidden-paragraph");
 	for (let i = 0; i < redactedParagraphs.length; i++) {
 		redactedParagraphs[i].className += " access-granted";
-  }
-  shownRedacted = true;
+	}
+	shownRedacted = true;
 }
 
 if (annyang) {
