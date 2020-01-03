@@ -1,3 +1,8 @@
+console.log(
+	"%cFigure out the mystery and stop looking at the source, you nerd.",
+	"border: 3px solid black; padding: 10px; background: #a11; color: white; font-size: x-large;"
+);
+
 var isMobile = false; //initiate as false
 // device detection
 if (
@@ -18,6 +23,8 @@ if (isMobile) {
 	let staticOverlay = document.querySelector("#static");
 	staticOverlay.style.opacity = 0.05;
 }
+
+document.querySelector("#startup").remove();
 
 var static = new Audio("./audio/static.wav");
 static.loop = true;
@@ -89,14 +96,15 @@ window.onload = () => {
 				new Audio("./audio/beep2.wav").play();
 				sayLine("<b>Connecting...</b>");
 				sayLine("<b>Sound Feed Connected</b>");
-				sayLine("<b>Inputting Encrypted Credentials...</b>");
+				sayLine("<b>Inputting 05-4 Credentials...</b>");
 				setTimeout(() => {
 					for (let i = 0; i < 200; i++) {
 						setTimeout(addLine, 5 * i);
 					}
 				}, 3000);
 				setTimeout(() => {
-					sayLine("<br><b>Downloading Article...</b>");
+					sayLine("<br><b>Success</b>");
+					sayLine("<b>Downloading Article...</b>");
 				}, 6000);
 				setTimeout(() => {
 					for (let i = 0; i <= 46; i++) {
@@ -201,6 +209,8 @@ document.querySelector("#select-matt").onclick = () => {
 	audio.play();
 };
 
+var shownRedacted = false;
+
 var commands = {
 	"make me a sandwich": function() {
 		audio = new Audio(`./audio/makemeasandwich${selectedAssistant}.wav`);
@@ -229,12 +239,50 @@ var commands = {
 	"what happened to matt": function() {
 		audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
 		audio.play();
+	},
+	"help": function() {
+		if (shownRedacted && selectedAssistant == 2) {
+			try {
+				audio = new Audio(`./audio/showedredacted${selectedAssistant}.wav`);
+				audio.play();
+			} catch (e) {}
+		} else {
+			try {
+				audio = new Audio(`./audio/showredacted${selectedAssistant}.wav`);
+				audio.play();
+			} catch (e) {}
+			if (selectedAssistant == 2) {
+				showRedactedParagraphs();
+			}
+		}
+	},
+	"can you help me": function() {
+		if (shownRedacted && selectedAssistant == 2) {
+			try {
+				audio = new Audio(`./audio/showedredacted${selectedAssistant}.wav`);
+				audio.play();
+			} catch (e) {}
+		} else {
+			try {
+				audio = new Audio(`./audio/showredacted${selectedAssistant}.wav`);
+				audio.play();
+      } catch (e) {}
+			if (selectedAssistant == 2) {
+				showRedactedParagraphs();
+			}
+		}
 	}
 };
 
-if (annyang) {
-	console.log("Starting speech recognition.");
+function showRedactedParagraphs() {
+	let redactedParagraphs = document.querySelectorAll(".hidden-paragraph");
+	for (let i = 0; i < redactedParagraphs.length; i++) {
+		redactedParagraphs[i].className += " access-granted";
+  }
+  shownRedacted = true;
+}
 
+if (annyang) {
 	annyang.addCommands(commands);
 
 	annyang.debug(true);
@@ -258,7 +306,7 @@ function randNumber(min, max) {
 }
 
 function glitch() {
-	console.log("Glitch.");
+	// console.log("Glitch.");
 	setTimeout(glitch, randNumber(5000, 10000));
 }
 glitch();
