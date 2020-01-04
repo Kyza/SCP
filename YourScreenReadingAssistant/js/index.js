@@ -25,6 +25,7 @@ if (isMobile) {
 }
 
 // document.querySelector("#startup").remove();
+// showRedactedParagraphs();
 
 var static = new Audio("./audio/static.wav");
 static.loop = true;
@@ -186,72 +187,106 @@ function fullscreen() {
 var audio = new Audio("");
 var selectedAssistant = 1;
 
-document.querySelector("#select-sam").onclick = () => {
-	selectedAssistant = 1;
+function selectAssistant(number) {
+	selectedAssistant = number;
 	audio.pause();
-	audio.removeEventListener("timeupdate", loop);
-};
-
-document.querySelector("#select-adam").onclick = () => {
-	selectedAssistant = 2;
-	audio.pause();
-	audio.removeEventListener("timeupdate", loop);
-};
-
-document.querySelector("#select-matt").onclick = () => {
-	selectedAssistant = 3;
-	audio.pause();
-	audio = new Audio("./audio/matt.wav");
 	try {
 		audio.removeEventListener("timeupdate", loop);
 	} catch (e) {}
-	audio.addEventListener("timeupdate", loop, false);
-	audio.play();
+	let selected = document.querySelectorAll(".selected");
+	for (let i = 0; i < selected.length; i++) {
+		selected[i].className = "";
+	}
+	if (number == 1) {
+		document.querySelector("#select-sam").className = "selected";
+	} else if (number == 2) {
+		document.querySelector("#select-adam").className = "selected";
+	} else {
+		document.querySelector("#select-matt").className = "selected";
+		audio = new Audio("./audio/matt.wav");
+		audio.addEventListener("timeupdate", loop, false);
+		audio.play();
+	}
+}
+
+document.querySelector("#select-sam").onkeydown = (e) => {
+	if (e.key.toLowerCase() != "tab" && e.key.toLowerCase() != "shift") {
+		selectAssistant(1);
+	}
+};
+document.querySelector("#select-adam").onkeydown = (e) => {
+	if (e.key.toLowerCase() != "tab" && e.key.toLowerCase() != "shift") {
+		selectAssistant(2);
+	}
+};
+document.querySelector("#select-matt").onkeydown = (e) => {
+	if (e.key.toLowerCase() != "tab" && e.key.toLowerCase() != "shift") {
+		selectAssistant(3);
+	}
+};
+document.querySelector("#select-sam").onclick = () => {
+	selectAssistant(1);
+};
+document.querySelector("#select-adam").onclick = () => {
+	selectAssistant(2);
+};
+document.querySelector("#select-matt").onclick = () => {
+	selectAssistant(3);
 };
 
 var shownRedacted = false;
 
 var commands = {
 	"make me a sandwich": function() {
+		audio.pause();
 		audio = new Audio(`./audio/makemeasandwich${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"what are you": function() {
+		audio.pause();
 		audio = new Audio(`./audio/whatareyou${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"can you hear me": function() {
+		audio.pause();
 		audio = new Audio(`./audio/canyouhearme${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"tell me a joke": function() {
+		audio.pause();
 		audio = new Audio(`./audio/tellmeajoke${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"where are you": function() {
+		audio.pause();
 		audio = new Audio(`./audio/whereareyou${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"can you play an instrument": function() {
+		audio.pause();
 		audio = new Audio(`./audio/canyouplayaninstrument${selectedAssistant}.wav`);
 		audio.play();
 	},
 	"what happened to matt": function() {
+		audio.pause();
 		audio = new Audio(`./audio/whathappenedtomatt${selectedAssistant}.wav`);
 		audio.play();
 	},
 	help: function() {
 		if (shownRedacted && selectedAssistant == 2) {
 			try {
+				audio.pause();
 				audio = new Audio(`./audio/showedredacted${selectedAssistant}.wav`);
 				audio.play();
 			} catch (e) {}
 		} else {
 			try {
+				audio.pause();
 				audio = new Audio(`./audio/showredacted${selectedAssistant}.wav`);
 				audio.play();
 			} catch (e) {}
 			if (selectedAssistant == 2) {
+				shownRedacted = true;
 				setTimeout(() => {
 					showRedactedParagraphs();
 				}, 14000);
@@ -261,15 +296,18 @@ var commands = {
 	"can you help me": function() {
 		if (shownRedacted && selectedAssistant == 2) {
 			try {
+				audio.pause();
 				audio = new Audio(`./audio/showedredacted${selectedAssistant}.wav`);
 				audio.play();
 			} catch (e) {}
 		} else {
 			try {
+				audio.pause();
 				audio = new Audio(`./audio/showredacted${selectedAssistant}.wav`);
 				audio.play();
 			} catch (e) {}
 			if (selectedAssistant == 2) {
+				shownRedacted = true;
 				setTimeout(() => {
 					showRedactedParagraphs();
 				}, 14000);
@@ -279,7 +317,8 @@ var commands = {
 };
 
 function showRedactedParagraphs() {
-	let redactedParagraphs = document.querySelectorAll(".hidden-paragraph");
+	new Audio(`./audio/beep1.wav`).play();
+	let redactedParagraphs = document.querySelectorAll(".hidden-section");
 	for (let i = 0; i < redactedParagraphs.length; i++) {
 		redactedParagraphs[i].className += " access-granted";
 	}

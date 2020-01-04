@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap');
+
+.handwriting {
+  font-family: "Kaushan Script";
+}
+
 * {
 	font-family: verdana, arial, helvetica, sans-serif;
 	color: #ddd;
@@ -88,24 +94,41 @@ body {
 
 .whiteout {
 	display: inline;
-	color: white;
+	color: white !important;
 	background-color: white;
 }
 
-.hidden-paragraph.access-granted .hidden-paragraph-denied {
+.hidden-section.access-granted .hidden-section-denied {
 	display: none;
 }
 
-.hidden-paragraph.access-granted .hidden-paragraph-text {
+.hidden-section.access-granted .hidden-section-text {
 	display: inline;
 }
-.hidden-paragraph-denied {
+.hidden-section-denied {
 	color: #a11;
 	font-weight: bold;
 }
 
-.hidden-paragraph-text {
+.hidden-section-text {
 	display: none;
+}
+
+.access-granted * {
+  color: #1a1;
+}
+.access-denied {
+  font-weight: bold;
+  color: #a11;
+}
+
+.email {
+  box-shadow: 0px 0px 10px black;
+}
+.email > div {
+  padding: 10px;
+  border: 1px solid #222;
+  box-shadow: inset 0px 0px 10px black;
 }
 
 #SCP {
@@ -126,7 +149,9 @@ b {
 	margin-top: 0px;
 	max-width: 100%;
 
-	transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  
+  filter: drop-shadow(0px 0px 10px black);
 }
 
 .scp-image {
@@ -184,11 +209,12 @@ b {
 
 	opacity: 0;
 
-	background-color: #222;
 	transition-duration: 0.4s;
 
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
+  
+  filter: drop-shadow(0px 0px 10px black);
 }
 
 #voice-settings-open-button:focus ~ #voice-settings,
@@ -205,34 +231,49 @@ b {
 }
 
 #ask-box {
-	height: calc(100% - 10px);
+	height: 100%;
 	color: #999;
-	border: 5px solid #222;
+	border: none;
 	background-color: #111;
 	height: 100%;
 	font-size: 20px;
 	margin-left: 60px;
 	padding-left: 10px;
 	padding-right: 10px;
+	transition-duration: 0.4s;
+}
+#ask-box:hover, #ask-box:focus {
+  background-color: #222;
 }
 
 #select-sam,
 #select-adam,
 #select-matt {
-	height: calc(100% - 10px);
-	line-height: 50px;
+	height: 100%;
+	line-height: 60px;
 	text-align: center;
-	border: 5px solid #222;
 	background-color: #111;
 	user-select: none;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
-#select-sam:hover,
-#select-adam:hover,
-#select-matt:hover {
+#select-sam:hover, #select-sam:focus,
+#select-adam:hover, #select-adam:focus,
+#select-matt:hover, #select-matt:focus {
 	background-color: #222;
 }
+
+#select-sam.selected {
+  background-color: #a11 !important;
+}
+#select-adam.selected {
+  background-color: #1a1 !important;
+}
+
+#select-matt.selected {
+  background-color: #11a !important;
+}
+
 
 #static {
 	position: fixed;
