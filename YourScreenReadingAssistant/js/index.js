@@ -325,18 +325,6 @@ function showRedactedParagraphs() {
 	shownRedacted = true;
 }
 
-if (annyang) {
-	annyang.addCommands(commands);
-
-	annyang.debug(true);
-
-	annyang.addCallback("error", (e) => {
-		console.error(e);
-	});
-
-	annyang.start({ continuous: true });
-}
-
 var askBox = document.querySelector("#ask-box");
 askBox.addEventListener("input", () => {
 	if (commands[askBox.value.toLowerCase()]) {
