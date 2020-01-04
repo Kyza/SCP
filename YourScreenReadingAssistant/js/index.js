@@ -97,7 +97,7 @@ window.onload = () => {
 				new Audio("./audio/beep2.wav").play();
 				sayLine("<b>Connecting...</b>");
 				sayLine("<b>Sound Feed Connected</b>");
-				sayLine("<b>Inputting 05-4 Credentials...</b>");
+				sayLine("<b>Inputting Dr. Kaiza's Credentials...</b>");
 				setTimeout(() => {
 					for (let i = 0; i < 200; i++) {
 						setTimeout(addLine, 5 * i);
